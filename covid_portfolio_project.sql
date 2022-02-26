@@ -1,5 +1,5 @@
 /*
-AlexTheAnalysts's COVID 19 Data Exploration Project
+COVID 19 Data Exploration Project
 
 Skills used: Windows Import, Queries, Joins, Converting Data Types, Aggregate Functions, Creating Views
 
