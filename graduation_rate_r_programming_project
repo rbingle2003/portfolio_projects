@@ -1,0 +1,47 @@
+#--------------------------------------------------------------------------------------------------------
+## Visual Representations of Graduation Trends 
+## All Data National Center for Education Statistics
+## https://nces.ed.gov/programs/digest/d20/tables/dt20_104.20.asp
+## Data scraped then cleaned in Microsoft Excel, Exported as CSV\
+## Still Work-in-Progress
+#--------------------------------------------------------------------------------------------------------
+
+nces <- read.csv("C:\\Users\\rbing\\Desktop\\Data Portfolio\\Cleaning\\nces_2021.csv")
+nces
+library(ggplot2)
+library(dplyr)
+
+## Plot High School Graduation Percentage Over Time
+
+# Create subset of total high school graduates
+nces_hs <- nces %>% select( , year, sex, highest_degree, total_pop) %>% filter( , sex == "t" & highest_degree == "high school")
+
+# Create line graph
+ggplot(data = nces_hs, mapping = aes(x = year, y = total_pop)) + 
+  geom_line(color = "blue") +
+  # Add standard labels
+  labs(
+    title = "High School Graduation Rate",
+    subtitle = "Total Percentage of Population Since 1940") +
+  xlab("Year") + ylab("Percentage(%)") +
+  # Add label to end of line
+  geom_text(data = filter(nces_hs, year == max(year)),
+            aes(label = total_pop), hjust = 0, color = "blue") +
+  # Allow bleed
+  coord_cartesian(clip = 'off')
+
+#--------------------------------------------------------------------------------------------------------
+## Plot Bachelor's Degrees by Sex Over Time
+#--------------------------------------------------------------------------------------------------------
+
+# Create subset of total male or female bachelors degrees
+nces_bach_sex <- nces %>% select( , year, sex, highest_degree, total_pop) %>% filter( , (sex == "m" | sex == "f") & highest_degree == "bachelors")
+
+# Create line graph
+ggplot(data = nces_bach_sex, mapping = aes(x = year, y = total_pop, col = sex)) + 
+  geom_line() +
+  # Add standard labels
+  labs(
+    title = "Total Bachelor's Degrees",
+    subtitle = "Percentage of Population by Sex Since 1980") +
+  xlab("Year") + ylab("Percentage(%)") 
