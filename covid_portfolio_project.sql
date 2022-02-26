@@ -3,6 +3,11 @@ COVID 19 Data Exploration Project
 
 Skills used: Windows Import, Queries, Joins, Converting Data Types, Aggregate Functions, Creating Views
 
+All Data Imported from Our World in Data:
+https://ourworldindata.org/covid-deaths
+
+Current as of 26-2-22
+
 */
 
 SELECT *
