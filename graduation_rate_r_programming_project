@@ -30,9 +30,7 @@ ggplot(data = nces_hs, mapping = aes(x = year, y = total_pop)) +
   # Allow bleed
   coord_cartesian(clip = 'off')
 
-#--------------------------------------------------------------------------------------------------------
 ## Plot Bachelor's Degrees by Sex Over Time
-#--------------------------------------------------------------------------------------------------------
 
 # Create subset of total male or female bachelors degrees
 nces_bach_sex <- nces %>% select( , year, sex, highest_degree, total_pop) %>% filter( , (sex == "m" | sex == "f") & highest_degree == "bachelors")
